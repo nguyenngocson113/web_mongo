@@ -10,15 +10,15 @@
   <div id="wrapper">
   <div id="noidung">
 
-  <% mang.forEach(function(item){ %>
+    <%for(i=0;i<mang.length;i++){%>
+      <div class="motSP">
+        <img width = "300px " height="200px" src="upload/<%=mang[i].image%>" />
+        <div style="color :#425E92"><%= mang[i].name%></div>
+      </div>
+  <%}%>
 
-    <div class="motSP">
-      <img width = "300px " height="200px" src="upload/<%=item.image%>" />
-      <div style="color :#425E92"><%= item.name%></div>
-    </div>
 
 
-  <% }); %>
 </div>
 
 </body>

@@ -4,7 +4,7 @@ var multer = require('multer')
 app.set('view engine','ejs')
 app.set('views','./views')
 app.use(express.static('public'))
-app.listen(process.env.PORT || 3000,function(){
+app.listen(3001,function(){
   console.log('connect thanh cong')
 })
 var bodyParser = require('body-parser')
@@ -40,18 +40,8 @@ var storage = multer.diskStorage({
 var upload = multer({
   storage:storage,
 }).single('file')
-app.get('/a',function(req,res){
-var banht = {"name": "aaa", "image":"bbb","mota":"ccc"};
-product.findOneAndUpdate({type: "cakes"}, {$push: {banh: banht}},function(err,result){
-  console.log(result)
-});
-})
-app.get('/b',function(req,res){
-  var a = "ma";
-  product.find({type:new RegExp(a)},function(err,result){
-    console.log(result)
-  })
-})
+
+
 app.post('/product_types',urlencodeParser,function(req,res){
   upload(req,res,function(err) {
     if (err) {
@@ -59,28 +49,11 @@ app.post('/product_types',urlencodeParser,function(req,res){
       res.send('that bai')
     }else
     {
-      // var banht = {"name": req.body.ten, "image":req.file.originalname,"mota":req.body.mota};
-      // product.findOneAndUpdate({type: req.body.loai}, {$push: {banh: banht}},function(err,result){
-      //   console.log(result)
-      // });
-      // res.render('test')
-
-      new product( {
-        type: req.body.loai,
-        banh:{
-          name: req.body.ten,
-          image:req.file.originalname,
-          mota: req.body.mota
-        }
-
-      }).save(function(err,doc){
-        if(err){res.json(err)}
-        else {
-          res.render('test')
-
-
-        }
-      })
+      var banht = {"name": req.body.ten, "image":req.file.originalname,"mota":req.body.mota};
+      product.findOneAndUpdate({type: req.body.loai}, {$push: {banh: banht}},function(err,result){
+        console.log(result)
+      });
+      res.render('test')
     }
   })
 })
