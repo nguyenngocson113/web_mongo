@@ -4,7 +4,7 @@ var multer = require('multer')
 app.set('view engine','ejs')
 app.set('views','./views')
 app.use(express.static('public'))
-app.listen(3001,function(){
+app.listen(process.env.PORT || 3000,function(){
   console.log('connect thanh cong')
 })
 var bodyParser = require('body-parser')
