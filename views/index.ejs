@@ -1,0 +1,25 @@
+<html>
+<head><title>PROFILE</title></head>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/layout.css">
+
+<body >
+<div id="banner"><img id='logo' src="background/cookie.jpg"></div>
+
+  <div id="wrapper">
+  <div id="noidung">
+
+  <% mang.forEach(function(item){ %>
+
+    <div class="motSP">
+      <img width = "300px " height="200px" src="upload/<%=item.image%>" />
+      <div style="color :#425E92"><%= item.name%></div>
+    </div>
+
+
+  <% }); %>
+</div>
+
+</body>
+</html>
